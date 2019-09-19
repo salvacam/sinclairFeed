@@ -129,9 +129,6 @@ var app = {
 
   		if (localStorage.getItem("_rssReader_Time") && localStorage.getItem("_rssReader_Time")!=''){
 			app.consultationTime = localStorage.getItem("_rssReader_Time");
-			localStorage.setItem('_rssReader_Time', app.consultationTime);
-		} else {
-			localStorage.setItem('_rssReader_Time', app.consultationTime);
 		}
 
 		app.showData();
