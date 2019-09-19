@@ -120,6 +120,11 @@ var app = {
 		}
 	},
 
+	updateTimeConsultation: function() {
+		app.consultationTime = Math.floor(Date.now() / 1000);			
+		localStorage.setItem('_rssReader_Time', app.consultationTime);
+	},
+
   	init: function() {  		
 
   		if (localStorage.getItem("_rssReader_Time") && localStorage.getItem("_rssReader_Time")!=''){
@@ -138,6 +143,9 @@ var app = {
 				app.modalClear.classList.add('hide');
 				localStorage.setItem('_rssReader_Data', '');
 				app.clearDiv();
+
+				app.updateTimeConsultation();
+
 				document.getElementById('okClear').removeEventListener('click', ()=> {});
   			});
 
@@ -150,8 +158,6 @@ var app = {
 	  	app.updateRSS.addEventListener('click', (event) => {			
 			app.getData();
 			
-			app.consultationTime = Math.floor(Date.now() / 1000);			
-			localStorage.setItem('_rssReader_Time', app.consultationTime);
 		});
 
 		if ('serviceWorker' in navigator) {
