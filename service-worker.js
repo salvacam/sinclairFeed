@@ -1,4 +1,4 @@
-var cacheName = 'rssReader-v0.1.01';
+var cacheName = 'rssReader-v0.2.02';
 
 var filesToCache = [
   './',
