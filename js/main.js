@@ -4,13 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var app = {  
 	
-	URL_SERVER: "https://calcicolous-moonlig.000webhostapp.com/rssReader/index.php?time=",
-	//URL_SERVER: "http://localhost:1234/back/index.php?time=",
+	URL_SERVER: "https://calcicolous-moonlig.000webhostapp.com/rssReader/index.php",
+	//URL_SERVER: "http://localhost:1234/back/index.php",
 	
   	clearRSS: document.getElementById('clearRSS'),
   	updateRSS: document.getElementById('updateRSS'),
 	modalClear: document.getElementById('modalClear'),  
 	principalDiv: document.getElementById('principalDiv'),
+	loader: document.getElementById('loader'),
 	  
 	consultationTime: 0,
 	
@@ -100,13 +101,19 @@ var app = {
 	getData: function() {
 			
 		app.updateRSS.classList.add('hide');
+		app.clearRSS.classList.add('hide');
+
+		app.loader.classList.remove('hide');
 
 		try {
-		  fetch(app.URL_SERVER+app.consultationTime)
+		  fetch(app.URL_SERVER)
 		  .then(
 			function(response) {
-	
-				app.updateRSS.classList.remove('hide');			  	
+				
+				app.loader.classList.add('hide');
+
+				app.updateRSS.classList.remove('hide');		  	
+				app.clearRSS.classList.remove('hide');
 	
 				response.text()
 			  	.then(function(text) {
@@ -121,15 +128,33 @@ var app = {
 	},
 
 	updateTimeConsultation: function() {
-		app.consultationTime = Math.floor(Date.now() / 1000);			
-		localStorage.setItem('_rssReader_Time', app.consultationTime);
+		//app.consultationTime = Math.floor(Date.now() / 1000);			
+		//localStorage.setItem('_rssReader_Time', app.consultationTime);
+
+		app.updateRSS.classList.add('hide');
+		app.clearRSS.classList.add('hide');
+		try {
+			fetch(app.URL_SERVER + '/clear')
+			.then(
+			  function(response) {
+	  
+				app.loader.classList.add('hide');
+
+				app.updateRSS.classList.remove('hide');
+				app.clearRSS.classList.remove('hide');
+			  }
+			);
+		  } catch (err) {
+			//app.showLastData();
+		  }
 	},
 
   	init: function() {  		
-
+		/*
   		if (localStorage.getItem("_rssReader_Time") && localStorage.getItem("_rssReader_Time")!=''){
 			app.consultationTime = localStorage.getItem("_rssReader_Time");
 		}
+		*/
 
 		app.showData();
 		  
@@ -153,8 +178,7 @@ var app = {
 		});
 
 	  	app.updateRSS.addEventListener('click', (event) => {			
-			app.getData();
-			
+			app.getData();			
 		});
 
 		if ('serviceWorker' in navigator) {
