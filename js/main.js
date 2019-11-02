@@ -12,6 +12,9 @@ var app = {
 	modalClear: document.getElementById('modalClear'),  
 	principalDiv: document.getElementById('principalDiv'),
 	loader: document.getElementById('loader'),
+
+	myModal: document.getElementById('myModal'),
+	closeModalButton: document.getElementById('close-modal'),
 	  
 	consultationTime: 0,
 	
@@ -56,6 +59,19 @@ var app = {
 
 	clearDiv: function() {
 		principalDiv.innerHTML = '';
+	},
+
+	showErrorMsg: function() {
+		app.loader.classList.add('hide');
+
+		app.updateRSS.classList.remove('hide');		  	
+		app.clearRSS.classList.remove('hide');
+
+		app.myModal.style.display = "block";
+	},
+
+	closeModal: function() {
+		app.myModal.style.display = "none";
 	},
 	
 	showData: function() {
@@ -108,8 +124,7 @@ var app = {
 		try {
 		  fetch(app.URL_SERVER)
 		  .then(
-			function(response) {
-				
+			function(response) {				
 				app.loader.classList.add('hide');
 
 				app.updateRSS.classList.remove('hide');		  	
@@ -121,9 +136,11 @@ var app = {
 			  		app.showData();
 			  	})
 			}
-		  );
+		  ).catch(function(err){
+		  	app.showErrorMsg();
+          });
 		} catch (err) {
-		  //app.showLastData();
+		  	app.showErrorMsg();
 		}
 	},
 
@@ -143,9 +160,11 @@ var app = {
 				app.updateRSS.classList.remove('hide');
 				app.clearRSS.classList.remove('hide');
 			  }
-			);
+			).catch(function(err){
+				app.showErrorMsg();
+			});
 		  } catch (err) {
-			//app.showLastData();
+		  	app.showErrorMsg();
 		  }
 	},
 
@@ -180,6 +199,8 @@ var app = {
 	  	app.updateRSS.addEventListener('click', (event) => {			
 			app.getData();			
 		});
+
+		app.closeModalButton.addEventListener('click', app.closeModal);  
 
 		if ('serviceWorker' in navigator) {
       		navigator.serviceWorker
