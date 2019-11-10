@@ -77,7 +77,8 @@ var app = {
 	showData: function() {
 		let dataRSS = "";		
 
-		if(localStorage.getItem('_rssReader_Data')) {
+		if(localStorage.getItem('_rssReader_Data') && 
+			localStorage.getItem('_rssReader_Data') !== "" && localStorage.getItem('_rssReader_Data') !== " ") {
 
 			app.clearDiv();
 

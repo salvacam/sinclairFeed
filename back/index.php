@@ -44,7 +44,8 @@ $lastTime = 0;
 if (isset($_GET["time"]) && !empty($_GET["time"])) {
 	$lastTime = intval(urlencode($_GET["time"]));
 } else {
-	$dateLast = $db->selectAll("date");
+	$dateLast = $db->selectAll("date");	
+	$now = new DateTime();
 	if (count($dateLast) == 0) {
 		$db->insert("date", array("date" => $now->getTimestamp()), true);
 	}
