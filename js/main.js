@@ -169,6 +169,21 @@ var app = {
 		  }
 	},
 
+	okClearFunction: function() {
+		app.modalClear.classList.add('hide');
+				localStorage.setItem('_rssReader_Data', '');
+				app.clearDiv();
+
+				app.updateTimeConsultation();
+
+				document.getElementById('okClear').removeEventListener('click', ()=> {});
+	},
+
+	closeClearFunction: function() {	
+		app.modalClear.classList.add('hide');
+		document.getElementById('closeClear').removeEventListener('click', ()=> {});
+	},
+
   	init: function() {  		
 		/*
   		if (localStorage.getItem("_rssReader_Time") && localStorage.getItem("_rssReader_Time")!=''){
@@ -182,18 +197,19 @@ var app = {
 	  		app.modalClear.classList.remove('hide');
 
   			document.getElementById('okClear').addEventListener('click', () => {
-				app.modalClear.classList.add('hide');
-				localStorage.setItem('_rssReader_Data', '');
-				app.clearDiv();
+				app.okClearFunction();
+  			});
 
-				app.updateTimeConsultation();
-
-				document.getElementById('okClear').removeEventListener('click', ()=> {});
+  			document.addEventListener("keyup", (e) => { 
+  				if (e.key === "Enter") {
+  					app.okClearFunction();
+  				} else if (e.key === "Escape") {
+  					app.closeClearFunction();
+  				}
   			});
 
   			document.getElementById('closeClear').addEventListener('click', () => {  				
-				app.modalClear.classList.add('hide');
-				document.getElementById('closeClear').removeEventListener('click', ()=> {});
+				app.closeClearFunction();
   			});		    
 		});
 
