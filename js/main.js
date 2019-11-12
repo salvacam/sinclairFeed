@@ -176,7 +176,7 @@ var app = {
 		}
 		*/
 
-		app.showData();
+		app.getData();
 		  
 		app.clearRSS.addEventListener('click', (event) => {
 	  		app.modalClear.classList.remove('hide');
