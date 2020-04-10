@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 var app = {  
 	
 	//URL_SERVER: "https://calcicolous-moonlig.000webhostapp.com/rssReader/index.php",
-	URL_SERVER: "https://rssreader999.herokuapp.com/",
+	URL_SERVER: "https://rssreader999.herokuapp.com/index.php",
 	//URL_SERVER: "http://localhost:1234/back/index.php",
 	
   	clearRSS: document.getElementById('clearRSS'),
