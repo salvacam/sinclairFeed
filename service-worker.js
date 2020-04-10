@@ -1,4 +1,4 @@
-var cacheName = 'rssReader-v0.2.02';
+var cacheName = 'rssReader-v0.2.03';
 
 var filesToCache = [
   './',
@@ -41,8 +41,8 @@ self.addEventListener('activate', function(e) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).catch(function() {
-      return caches.match(event.request);
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
     })
   );
 });
