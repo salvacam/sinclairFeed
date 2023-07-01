@@ -1,4 +1,4 @@
-var cacheName = 'rssReader-v0.2.03';
+var cacheName = 'sinclairReader-v0.0.01';
 
 var filesToCache = [
   './',

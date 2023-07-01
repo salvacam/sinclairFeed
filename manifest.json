@@ -1,7 +1,7 @@
 {
-  "lang": "es",
-  "name": "RSS Reader",
-  "short_name": "RSSreader",
+  "lang": "en",
+  "name": "Sinclair ZX World Feed Reader",
+  "short_name": "Sinclair reader",
   "icons": [{
         "src": "img/icon-48x48.png",
         "sizes": "48x48",
