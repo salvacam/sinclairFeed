@@ -1,4 +1,4 @@
-var cacheName = 'sinclairReader-v0.0.01';
+var cacheName = 'sinclairReader-v0.0.02';
 
 var filesToCache = [
   './',

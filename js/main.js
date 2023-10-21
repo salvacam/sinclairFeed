@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var app = {  
 	
-	URL_SERVER: "https://calcicolous-moonlig1.000webhostapp.com/sinclairReader/index.php",
+	//URL_SERVER: "https://calcicolous-moonlig1.000webhostapp.com/sinclairReader/index.php",
+	URL_SERVER: "https://sinclairzxworld.com/app.php/feed",
 	//URL_SERVER: "http://localhost:4321/index.php",
 	
   	updateRSS: document.getElementById('updateRSS'),
@@ -109,10 +110,29 @@ var app = {
 
 		app.loader.classList.remove('hide');
 
+
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+  	debugger;
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", app.URL_SERVER);
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.send(data);
+
+/*
 		try {
 		  fetch(app.URL_SERVER)
 		  .then(
-			function(response) {				
+			function(response) {		
+			debugger;		
 				app.loader.classList.add('hide');
 
 				app.updateRSS.classList.remove('hide');
@@ -129,6 +149,7 @@ var app = {
 		} catch (err) {
 		  	app.showErrorMsg();
 		}
+		*/
 	},
 
 	updateTimeConsultation: function() {
