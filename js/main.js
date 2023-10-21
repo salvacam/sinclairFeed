@@ -114,7 +114,7 @@ var app = {
 var data = null;
 
 var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+//xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
@@ -124,7 +124,7 @@ xhr.addEventListener("readystatechange", function () {
 });
 
 xhr.open("GET", app.URL_SERVER);
-xhr.setRequestHeader("cache-control", "no-cache");
+//xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send(data);
 
 /*
