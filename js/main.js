@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
 var app = {  
 	
 	//URL_SERVER: "https://calcicolous-moonlig1.000webhostapp.com/sinclairReader/index.php",
-	URL_SERVER: "https://sinclairzxworld.com/app.php/feed",
-	//URL_SERVER: "http://localhost:4321/index.php",
+	//URL_SERVER: "https://sinclairzxworld.com/app.php/feed",
+	//URL_SERVER: "http://localhost:4321/index.php",	
+	URL_SERVER: "https://salvacam.x10.mx/sinclairFeed/back/index.php",
 	
   	updateRSS: document.getElementById('updateRSS'),
 	principalDiv: document.getElementById('principalDiv'),
@@ -111,30 +112,11 @@ var app = {
 		app.loader.classList.remove('hide');
 
 
-var data = null;
-
-var xhr = new XMLHttpRequest();
-//xhr.withCredentials = true;
-xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
-xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === 4) {
-  	debugger;
-    console.log(this.responseText);
-  }
-});
-
-xhr.open("GET", app.URL_SERVER);
-//xhr.setRequestHeader("cache-control", "no-cache");
-xhr.send(data);
-
-/*
+		var data = null;
 		try {
 		  fetch(app.URL_SERVER)
 		  .then(
-			function(response) {		
-			debugger;		
+			function(response) {
 				app.loader.classList.add('hide');
 
 				app.updateRSS.classList.remove('hide');
@@ -147,11 +129,10 @@ xhr.send(data);
 			}
 		  ).catch(function(err){
 		  	app.showErrorMsg();
-          });
+          	});
 		} catch (err) {
 		  	app.showErrorMsg();
 		}
-		*/
 	},
 
 	updateTimeConsultation: function() {
