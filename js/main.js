@@ -112,7 +112,10 @@ var app = {
 
 
 		var data = null;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f68450766e4af4627ee6d205b04b23bfd4eba28c
 		try {
 		  fetch(app.URL_SERVER)
 		  .then(
@@ -129,7 +132,7 @@ var app = {
 			}
 		  ).catch(function(err){
 		  	app.showErrorMsg();
-          });
+          	});
 		} catch (err) {
 		  	app.showErrorMsg();
 		}
